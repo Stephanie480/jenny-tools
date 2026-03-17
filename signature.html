@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Jenny Internet - Gmail Signature Generator</title>
+    <title>Jenny Internet Master Signature Generator</title>
     <style>
-        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 20px; background: #f0f2f5; color: #3c4043; }
-        .container { max-width: 700px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
-        .header { border-bottom: 2px solid #e30613; margin-bottom: 25px; padding-bottom: 10px; display: flex; align-items: center; justify-content: space-between;}
+        body { font-family: 'Segoe UI', sans-serif; padding: 20px; background: #f4f4f4; color: #333; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 15px rgba(0,0,0,0.1); }
+        .header { border-bottom: 2px solid #e30613; margin-bottom: 20px; padding-bottom: 10px; display: flex; align-items: center; justify-content: space-between;}
         .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
-        label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 12px; color: #5f6368; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #dadce0; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
-        #preview-box { margin-top: 30px; padding: 20px; border: 1px solid #e8eaed; border-radius: 8px; background: #fff; }
-        .copy-btn { background: #e30613; color: white; border: none; padding: 15px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 20px; font-size: 16px; transition: 0.3s; }
-        .copy-btn:hover { background: #c20510; }
-        .instructions { font-size: 12px; color: #70757a; margin-top: 15px; text-align: center; line-height: 1.5; }
+        label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 13px; color: #666; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        #preview-area { margin-top: 30px; padding: 20px; border: 1px dashed #ccc; background: #fff; overflow-x: auto; }
+        .copy-btn { background: #e30613; color: white; border: none; padding: 15px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px; font-size: 16px; }
+        .copy-btn:hover { background: #b3050f; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <div class="header">
-        <h2 style="color:#e30613; margin:0;">Gmail Signature Portal</h2>
-        <img src="Jenny Logo New.jpg" width="60" alt="Logo">
+        <h2 style="color:#e30613; margin:0;">2025 Signature Portal</h2>
+        <img src="Jenny Logo New.jpg" width="50" alt="Logo">
     </div>
     
     <div class="input-grid">
         <div style="grid-column: span 2;">
-            <label>Select Entity</label>
+            <label>Entity / Country</label>
             <select id="country" onchange="updateSignature()">
                 <option value="SA">South Africa</option>
                 <option value="BW">Botswana</option>
@@ -36,22 +35,22 @@
             </select>
         </div>
         <div><label>Full Name</label><input type="text" id="name" placeholder="Name Surname" oninput="updateSignature()"></div>
-        <div><label>Position</label><input type="text" id="title" placeholder="Sales Consultant" oninput="updateSignature()"></div>
+        <div><label>Position</label><input type="text" id="title" placeholder="Position" oninput="updateSignature()"></div>
         <div><label>Direct / Cell</label><input type="text" id="cell" placeholder="+27 87 170 0000" oninput="updateSignature()"></div>
-        <div><label>Your Email</label><input type="text" id="email" placeholder="mbali@jennyinternet.africa" oninput="updateSignature()"></div>
+        <div><label>Email Address</label><input type="text" id="email" placeholder="email@jennyinternet.africa" oninput="updateSignature()"></div>
     </div>
 
-    <div id="preview-box">
+    <div id="preview-area">
         <div id="sig-content">
-            <table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; color: #333; line-height: 1.3; min-width: 450px;">
+            <table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; color: #333; line-height: 1.2; min-width: 500px;">
                 <tr>
-                    <td style="padding-right: 15px; vertical-align: top;">
-                        <img id="logo-img" src="" width="100" style="display: block; border: 0;">
+                    <td style="padding-right: 20px; vertical-align: top; border-right: 2px solid #e30613;">
+                        <img id="logo-img" src="" width="110" alt="Jenny Logo" style="display: block; border: 0;">
                     </td>
-                    <td style="border-left: 2px solid #e30613; padding-left: 15px; vertical-align: top;">
-                        <div id="disp-name" style="font-weight: bold; font-size: 18px; color: #000;">Name Surname</div>
-                        <div id="disp-title" style="font-size: 14px; color: #e30613; margin-bottom: 8px;">Position</div>
-                        <div style="font-size: 12px; color: #444;">
+                    <td style="padding-left: 20px; vertical-align: top;">
+                        <div id="disp-name" style="font-weight: bold; font-size: 14pt; color: #000;">Name Surname</div>
+                        <div id="disp-title" style="font-size: 10pt; color: #e30613; margin-bottom: 8px;">Position</div>
+                        <div style="font-size: 9pt; color: #333;">
                             <span id="disp-cell">Direct: +27 87 170 0000</span><br>
                             <span id="disp-email">Email: email@jennyinternet.africa</span><br>
                             <span id="disp-tel">Tel: +27 87 170 0000</span> | <a id="disp-web" href="#" style="color: #e30613; text-decoration: none; font-weight: bold;">www.jenny.co.za</a>
@@ -60,63 +59,59 @@
                 </tr>
                 <tr>
                     <td colspan="2" style="padding-top: 15px;">
-                        <div id="disp-addr" style="font-size: 11px; color: #666; margin-bottom: 4px; font-weight: bold;">Address line</div>
-                        <div id="disp-license" style="font-size: 10px; color: #888; margin-bottom: 10px;">License details</div>
-                        <div id="disp-disclaimer" style="font-size: 9px; color: #999; line-height: 1.2; border-top: 1px solid #eee; padding-top: 8px; width: 500px;">Disclaimer text...</div>
+                        <div id="disp-addr" style="font-size: 8.5pt; color: #444; margin-bottom: 4px; font-weight: bold;">Office Address</div>
+                        <div id="disp-license" style="font-size: 7.5pt; color: #666; margin-bottom: 10px;">License Details</div>
+                        <div id="disp-disclaimer" style="font-size: 7.5pt; color: #999; line-height: 1.2; border-top: 1px solid #eee; padding-top: 8px; max-width: 550px;">Disclaimer text...</div>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
     
-    <button class="copy-btn" onclick="copySignature()">Copy for Gmail</button>
-    <div class="instructions">
-        <strong>How to use:</strong> Click the button above, then open <strong>Gmail Settings</strong> > <strong>See all settings</strong> > <strong>Signature</strong>. <br>Paste (Ctrl+V) into the signature box.
-    </div>
+    <button class="copy-btn" onclick="copySignature()">Copy Signature for Gmail</button>
 </div>
 
 <script>
     // Build absolute URL for GitHub logo
     const repoURL = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-    const logoURL = repoURL + "Jenny%20Logo%20New.jpg";
-    document.getElementById('logo-img').src = logoURL;
+    document.getElementById('logo-img').src = repoURL + "Jenny%20Logo%20New.jpg";
 
     const officeData = {
         SA: {
             tel: "+27 87 170 0000", web: "www.jenny.co.za",
-            addr: "Newcastle: 27 Gemsbok Street, Newcastle 2940  | JHB: Unit 9 French Park, Randburg ",
-            license: "IECS: 0286/IECS/MAR/09 | IECNS: 0286/IECNS/MAR/09 ",
-            disclaimer: "The information in this email is confidential..."
+            addr: "Newcastle: 27 Gemsbok Street, Newcastle 2940 | JHB: Unit 9 French Park, Randburg 2194",
+            license: "IECS: 0286/IECS/MAR/09 | IECNS: 0286/IECNS/MAR/09",
+            disclaimer: "Confidentiality & Privacy Notice: This email is confidential and may be legally privileged. This communication is subject to the terms, POPIA compliance, and legal policies of Jenny Internet (Pty) Ltd."
         },
         BW: {
-            tel: "+26 73 972 712 ", web: "www.jenny.co.bw ",
-            addr: "Gaborone: Plot 50161, Section 8, Building 3, Unit 1, Block 5 Gaborone ",
-            license: "BOCRA License: SAP2017/046 | Co. Nr: UIN BW00000863877 ",
-            disclaimer: "The information in this email is confidential..."
+            tel: "+26 73 972 712", web: "www.jenny.co.bw",
+            addr: "Gaborone: Plot 50161, Section 8, Building 3, Unit 1, Block 5 Gaborone",
+            license: "BOCRA License: SAP2017/046 | Company Number: UIN BW00000863877",
+            disclaimer: "This email is confidential and intended for the addressee only. Subject to the terms and privacy policies of Jenny Internet (Proprietary) Limited."
         },
         SZ: {
-            tel: "+268 2411 3270 ", web: "www.Jenny.co.sz ",
-            addr: "Mbabane: Office no.15 Checkers Business Park, Mbabane ",
-            license: "ESC License: GECS/001/17/JENNY | Co. ID: 201508181016311 ",
-            disclaimer: "The information in this email is confidential..."
+            tel: "+268 2411 3270", web: "www.Jenny.co.sz",
+            addr: "Mbabane: Office no.15 Checkers Business Park, Mbabane",
+            license: "ESC License: GECS/001/17/JENNY | Co. ID: 201508181016311",
+            disclaimer: "Notice: Confidential and intended for the addressee. Usage is subject to the eSwatini Data Protection Act and Jenny Internet eSwatini Limited legal terms."
         },
         MZ: {
-            tel: "+27 87 170 0000 ", web: "www.Jenny.co.mz ",
-            addr: "Polana Cimento, Av. Julius Nyerere n53, 1st Floor, Maputo ",
-            license: "Reg #: 101212807 | VAT: 401045155 ",
-            disclaimer: "The information in this email is confidential..."
+            tel: "+27 87 170 0000", web: "www.Jenny.co.mz",
+            addr: "Jenny Internet Limitada: Polana Cimento, Av. Julius Nyerere n53, 1st Floor, Maputo",
+            license: "Reg #: 101212807 | VAT: 401045155 | ARECOM License: 02/LC-A/ARECOM/2020",
+            disclaimer: "Confidentiality Notice: This email is confidential and intended for the addressee only. Subject to Mozambique legal privacy policies."
         },
         LS: {
-            tel: "+266 5201 0024 [cite: 11]", web: "www.jenny.co.ls [cite: 11]",
-            addr: "28 Motsoene Road, Dolphin House, Maseru Industrial [cite: 11]",
-            license: "Reg: 76260 | LCA License: LSO/2022/TL01/2 [cite: 11]",
-            disclaimer: "The information contained in this communication is confidential and may be legally privileged. It is intended solely for the person or entity to whom it is addressed. [cite: 11]"
+            tel: "+266 5201 0024", web: "www.jenny.co.ls",
+            addr: "28 Motsoene Road, Dolphin House, Maseru Industrial, Lesotho",
+            license: "Reg: 76260 | LCA License: LSO/2022/TL01/2",
+            disclaimer: "Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Lesotho (Pty) Ltd."
         },
         ZM: {
-            tel: "+260 700019301 [cite: 13]", web: "www.jenny.co.zm [cite: 13]",
-            addr: "Lusaka: 23rd Floor Findeco House, Cairo Road [cite: 13]",
-            license: "LCO No. : 120190006154 [cite: 13]",
-            disclaimer: "The information contained in this communication is confidential and may be legally privileged. [cite: 13]"
+            tel: "+260 700019301", web: "www.jenny.co.zm",
+            addr: "Lusaka: 23rd Floor Findeco House, Cairo Road. Lusaka Zambia 10101",
+            license: "LCO No.: 120190006154 | ZICTA License: ZICTA/ICT/ECS/0154",
+            disclaimer: "Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Internet Zambia Limited."
         }
     };
 
@@ -142,7 +137,7 @@
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
         document.execCommand("copy");
-        alert("Signature copied! Go to Gmail Settings and Paste.");
+        alert("Signature copied! Go to Gmail settings and paste (Ctrl+V).");
     }
     updateSignature();
 </script>
