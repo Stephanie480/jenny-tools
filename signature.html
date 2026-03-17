@@ -19,7 +19,7 @@
 <div class="container">
     <div class="header">
         <h2 style="color:#e30613; margin:0;">Staff Signature Portal</h2>
-        <img src="Jenny Logo New.jpg" width="50" alt="Logo">
+        <img id="header-logo" src="Jenny Logo New.jpg" width="50" alt="Logo">
     </div>
     
     <div class="input-grid">
@@ -61,7 +61,7 @@
                     <td colspan="2" style="padding-top: 15px;">
                         <div id="disp-addr" style="font-size: 8.5pt; color: #444; margin-bottom: 4px; font-weight: bold;">Address line</div>
                         <div id="disp-license" style="font-size: 7.5pt; color: #666; margin-bottom: 10px;">License details</div>
-                        <div id="disp-disclaimer" style="font-size: 7.5pt; color: #999; line-height: 1.2; border-top: 1px solid #eee; padding-top: 8px; max-width: 580px;">Disclaimer text...</div>
+                        <div id="disp-disclaimer" style="font-size: 7.5pt; color: #999; line-height: 1.2; border-top: 1px solid #eee; padding-top: 8px; max-width: 580px;"></div>
                     </td>
                 </tr>
             </table>
@@ -80,37 +80,51 @@
             tel: "+27 87 170 0000", web: "www.jenny.co.za",
             addr: "Newcastle: 27 Gemsbok Street, Newcastle South Africa 2940 | Johannesburg: Unit 9 French Park, 90 Oxford Street, Randburg, Johannesburg South Africa 2194",
             license: "Individual Electronics Communications Service License: 0286/IECS/MAR/09 | Individual Electronics Communications Network License: 0286/IECNS/MAR/09",
-            disclaimer: "Confidentiality & Privacy Notice: This email is confidential and may be legally privileged. It is intended for the addressee only. This communication is subject to the terms, POPIA compliance, and legal policies of Jenny Internet (Pty) Ltd, which can be viewed at jenny.co.za/web/legal. If you have received this in error, please notify the sender and delete it immediately."
+            legalLink: "https://jenny.co.za/web/legal",
+            disclaimerStart: "Confidentiality & Privacy Notice: This email is confidential and may be legally privileged. It is intended for the addressee only. This communication is subject to the terms, POPIA compliance, and legal policies of Jenny Internet (Pty) Ltd, which can be viewed at ",
+            disclaimerEnd: ". If you have received this in error, please notify the sender and delete it immediately."
         },
         BW: {
             tel: "+26 73 972 712", web: "www.jenny.co.bw",
             addr: "Gaborone: Plot 50161, Section 8, Building 3, Unit 1, Block 5 Gaborone Botswana",
             license: "Electronic Communications Services License by Botswana Communications Regulatory Authority. License Number: SAP2017/046 Company Number: UIN BW00000863877",
-            disclaimer: "This email is confidential and intended for the addressee only. If received in error, please notify the sender and delete it. This communication is subject to the terms and privacy policies of Jenny Internet (Proprietary) Limited, available at jenny.co.bw/legal."
+            legalLink: "https://jenny.co.bw/legal",
+            disclaimerStart: "This email is confidential and intended for the addressee only. If received in error, please notify the sender and delete it. This communication is subject to the terms and privacy policies of Jenny Internet (Proprietary) Limited, available at ",
+            disclaimerEnd: "."
         },
         SZ: {
             tel: "+268 2411 3270", web: "www.Jenny.co.sz",
             addr: "Mbabane: Office no.15 Checkers Business Park Mbabane Swaziland",
             license: "Certificate of Incorporation: 1631 of 2015 Company ID: 201508181016311 Company Nr: R7/43909 Tax Certification: 105060718 | ESSCOM Network and Service License: GECS/001/17/JENNY",
-            disclaimer: "Notice: Confidential and intended for the addressee. Usage of this info is subject to the eSwatini Data Protection Act and Jenny Internet eSwatini Limited legal terms at jenny.co.sz/legal. If received in error, please delete."
+            legalLink: "https://jenny.co.sz/legal",
+            disclaimerStart: "Notice: Confidential and intended for the addressee. Usage of this info is subject to the eSwatini Data Protection Act and Jenny Internet eSwatini Limited legal terms at ",
+            disclaimerEnd: ". If received in error, please delete."
         },
         MZ: {
             tel: "+27 87 170 0000", web: "www.Jenny.co.mz",
             addr: "Jenny Internet Limitada: Polana Cimento, Av.Julius Nyerere n53, 1st Floor",
             license: "Reg #: In Company Number: 101212807 Vat # :401045155 | ARECOM Service License 02/LC-A/ARECOM/2020 | ARECOM Network License 018/CA/ARECOM/2019",
-            disclaimer: "Confidentiality Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Internet Mozambique Limited, available at jenny.co.mz/en/legal. If received in error, please notify the sender and delete. Aviso de Confidencialidade: Este e-mail é destinado apenas ao destinatário. Está sujeito aos termos e políticas de privacidade da Jenny Internet Mozambique Limited, disponíveis em https://www.jenny.co.mz/web/pt-pt/documentos_legais. Se recebido por erro, por favor notifique o remetente e apague a mensagem."
+            legalLink: "https://jenny.co.mz/en/legal",
+            ptLegalLink: "https://www.jenny.co.mz/web/pt-pt/documentos_legais",
+            disclaimerStart: "Confidentiality Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Internet Mozambique Limited, available at ",
+            disclaimerMid: ". If received in error, please notify the sender and delete. Aviso de Confidencialidade: Este e-mail é destinado apenas ao destinatário. Está sujeito aos termos e políticas de privacidade da Jenny Internet Mozambique Limited, disponíveis em ",
+            disclaimerEnd: ". Se recebido por erro, por favor notifique o remetente e apague a mensagem."
         },
         LS: {
             tel: "+266 5201 0024", web: "www.jenny.co.ls",
             addr: "28 Motsoene Road, Dolphin House, Maseru Industrial , Lesotho",
             license: "Registration Number 76260 | Lesotho Communication Authority License # LSO/2022/TL01/2",
-            disclaimer: "Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Lesotho (Pty) Ltd, available at jenny.co.ls/legal. If received in error, please notify the sender and delete."
+            legalLink: "https://jenny.co.ls/legal",
+            disclaimerStart: "Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Lesotho (Pty) Ltd, available at ",
+            disclaimerEnd: ". If received in error, please notify the sender and delete."
         },
         ZM: {
             tel: "+260 700019301", web: "www.jenny.co.zm",
             addr: "Limited: 23rd Floor Findeco House, Cairo Road. Lusaka Zambia 10101",
             license: "LCO No. : 120190006154 | ZICTA Service License ZICTA/ICT/ECS/0154 | ZICTA Network License ZICTA/ICT/ECN/0154",
-            disclaimer: "Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Internet Zambia Limited, available at jenny.co.zm/legal. If received in error, please notify the sender and delete."
+            legalLink: "https://jenny.co.zm/legal",
+            disclaimerStart: "Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Internet Zambia Limited, available at ",
+            disclaimerEnd: ". If received in error, please notify the sender and delete."
         }
     };
 
@@ -123,11 +137,22 @@
         document.getElementById('disp-cell').innerText = "Direct: " + (document.getElementById('cell').value || "+27 87 170 0000");
         document.getElementById('disp-email').innerText = "Email: " + (document.getElementById('email').value || "name@jennyinternet.africa");
         document.getElementById('disp-tel').innerText = "Tel: " + d.tel;
-        document.getElementById('disp-web').innerText = d.web;
-        document.getElementById('disp-web').href = "https://" + d.web;
+        
+        const webLink = document.getElementById('disp-web');
+        webLink.innerText = d.web;
+        webLink.href = "https://" + d.web;
+        
         document.getElementById('disp-addr').innerText = d.addr;
         document.getElementById('disp-license').innerText = d.license;
-        document.getElementById('disp-disclaimer').innerText = d.disclaimer;
+
+        const discContainer = document.getElementById('disp-disclaimer');
+        discContainer.innerHTML = ""; // Clear existing
+
+        if (country === 'MZ') {
+            discContainer.innerHTML = d.disclaimerStart + `<a href="${d.legalLink}" style="color: #999; text-decoration: underline;">${d.legalLink.replace('https://','')}</a>` + d.disclaimerMid + `<a href="${d.ptLegalLink}" style="color: #999; text-decoration: underline;">${d.ptLegalLink}</a>` + d.disclaimerEnd;
+        } else {
+            discContainer.innerHTML = d.disclaimerStart + `<a href="${d.legalLink}" style="color: #999; text-decoration: underline;">${d.legalLink.replace('https://','')}</a>` + d.disclaimerEnd;
+        }
     }
 
     function copySignature() {
@@ -136,7 +161,7 @@
         window.getSelection().removeAllRanges();
         window.getSelection().addRange(range);
         document.execCommand("copy");
-        alert("Signature copied! Go to Gmail settings and paste (Ctrl+V).");
+        alert("Signature copied! Go to Gmail settings and paste.");
     }
     updateSignature();
 </script>
