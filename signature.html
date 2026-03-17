@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jenny Internet - Gmail Signature Generator</title>
+    <style>
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; padding: 20px; background: #f0f2f5; color: #3c4043; }
+        .container { max-width: 700px; margin: auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+        .header { border-bottom: 2px solid #e30613; margin-bottom: 25px; padding-bottom: 10px; display: flex; align-items: center; justify-content: space-between;}
+        .input-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px; }
+        label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 12px; color: #5f6368; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #dadce0; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        #preview-box { margin-top: 30px; padding: 20px; border: 1px solid #e8eaed; border-radius: 8px; background: #fff; }
+        .copy-btn { background: #e30613; color: white; border: none; padding: 15px; border-radius: 6px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 20px; font-size: 16px; transition: 0.3s; }
+        .copy-btn:hover { background: #c20510; }
+        .instructions { font-size: 12px; color: #70757a; margin-top: 15px; text-align: center; line-height: 1.5; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h2 style="color:#e30613; margin:0;">Gmail Signature Portal</h2>
+        <img src="Jenny Logo New.jpg" width="60" alt="Logo">
+    </div>
+    
+    <div class="input-grid">
+        <div style="grid-column: span 2;">
+            <label>Select Entity</label>
+            <select id="country" onchange="updateSignature()">
+                <option value="SA">South Africa</option>
+                <option value="BW">Botswana</option>
+                <option value="SZ">eSwatini</option>
+                <option value="MZ">Mozambique</option>
+                <option value="LS">Lesotho</option>
+                <option value="ZM">Zambia</option>
+            </select>
+        </div>
+        <div><label>Full Name</label><input type="text" id="name" placeholder="Name Surname" oninput="updateSignature()"></div>
+        <div><label>Position</label><input type="text" id="title" placeholder="Sales Consultant" oninput="updateSignature()"></div>
+        <div><label>Direct / Cell</label><input type="text" id="cell" placeholder="+27 87 170 0000" oninput="updateSignature()"></div>
+        <div><label>Your Email</label><input type="text" id="email" placeholder="mbali@jennyinternet.africa" oninput="updateSignature()"></div>
+    </div>
+
+    <div id="preview-box">
+        <div id="sig-content">
+            <table cellpadding="0" cellspacing="0" style="font-family: Arial, sans-serif; color: #333; line-height: 1.3; min-width: 450px;">
+                <tr>
+                    <td style="padding-right: 15px; vertical-align: top;">
+                        <img id="logo-img" src="" width="100" style="display: block; border: 0;">
+                    </td>
+                    <td style="border-left: 2px solid #e30613; padding-left: 15px; vertical-align: top;">
+                        <div id="disp-name" style="font-weight: bold; font-size: 18px; color: #000;">Name Surname</div>
+                        <div id="disp-title" style="font-size: 14px; color: #e30613; margin-bottom: 8px;">Position</div>
+                        <div style="font-size: 12px; color: #444;">
+                            <span id="disp-cell">Direct: +27 87 170 0000</span><br>
+                            <span id="disp-email">Email: email@jennyinternet.africa</span><br>
+                            <span id="disp-tel">Tel: +27 87 170 0000</span> | <a id="disp-web" href="#" style="color: #e30613; text-decoration: none; font-weight: bold;">www.jenny.co.za</a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="padding-top: 15px;">
+                        <div id="disp-addr" style="font-size: 11px; color: #666; margin-bottom: 4px; font-weight: bold;">Address line</div>
+                        <div id="disp-license" style="font-size: 10px; color: #888; margin-bottom: 10px;">License details</div>
+                        <div id="disp-disclaimer" style="font-size: 9px; color: #999; line-height: 1.2; border-top: 1px solid #eee; padding-top: 8px; width: 500px;">Disclaimer text...</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <button class="copy-btn" onclick="copySignature()">Copy for Gmail</button>
+    <div class="instructions">
+        <strong>How to use:</strong> Click the button above, then open <strong>Gmail Settings</strong> > <strong>See all settings</strong> > <strong>Signature</strong>. <br>Paste (Ctrl+V) into the signature box.
+    </div>
+</div>
+
+<script>
+    // Build absolute URL for GitHub logo
+    const repoURL = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
+    const logoURL = repoURL + "Jenny%20Logo%20New.jpg";
+    document.getElementById('logo-img').src = logoURL;
+
+    const officeData = {
+        SA: {
+            tel: "+27 87 170 0000", web: "www.jenny.co.za",
+            addr: "Newcastle: 27 Gemsbok Street, Newcastle 2940  | JHB: Unit 9 French Park, Randburg ",
+            license: "IECS: 0286/IECS/MAR/09 | IECNS: 0286/IECNS/MAR/09 ",
+            disclaimer: "The information in this email is confidential..."
+        },
+        BW: {
+            tel: "+26 73 972 712 ", web: "www.jenny.co.bw ",
+            addr: "Gaborone: Plot 50161, Section 8, Building 3, Unit 1, Block 5 Gaborone ",
+            license: "BOCRA License: SAP2017/046 | Co. Nr: UIN BW00000863877 ",
+            disclaimer: "The information in this email is confidential..."
+        },
+        SZ: {
+            tel: "+268 2411 3270 ", web: "www.Jenny.co.sz ",
+            addr: "Mbabane: Office no.15 Checkers Business Park, Mbabane ",
+            license: "ESC License: GECS/001/17/JENNY | Co. ID: 201508181016311 ",
+            disclaimer: "The information in this email is confidential..."
+        },
+        MZ: {
+            tel: "+27 87 170 0000 ", web: "www.Jenny.co.mz ",
+            addr: "Polana Cimento, Av. Julius Nyerere n53, 1st Floor, Maputo ",
+            license: "Reg #: 101212807 | VAT: 401045155 ",
+            disclaimer: "The information in this email is confidential..."
+        },
+        LS: {
+            tel: "+266 5201 0024 [cite: 11]", web: "www.jenny.co.ls [cite: 11]",
+            addr: "28 Motsoene Road, Dolphin House, Maseru Industrial [cite: 11]",
+            license: "Reg: 76260 | LCA License: LSO/2022/TL01/2 [cite: 11]",
+            disclaimer: "The information contained in this communication is confidential and may be legally privileged. It is intended solely for the person or entity to whom it is addressed. [cite: 11]"
+        },
+        ZM: {
+            tel: "+260 700019301 [cite: 13]", web: "www.jenny.co.zm [cite: 13]",
+            addr: "Lusaka: 23rd Floor Findeco House, Cairo Road [cite: 13]",
+            license: "LCO No. : 120190006154 [cite: 13]",
+            disclaimer: "The information contained in this communication is confidential and may be legally privileged. [cite: 13]"
+        }
+    };
+
+    function updateSignature() {
+        const country = document.getElementById('country').value;
+        const d = officeData[country];
+        
+        document.getElementById('disp-name').innerText = document.getElementById('name').value || "Name Surname";
+        document.getElementById('disp-title').innerText = document.getElementById('title').value || "Position";
+        document.getElementById('disp-cell').innerText = "Direct: " + (document.getElementById('cell').value || "+27 87 170 0000");
+        document.getElementById('disp-email').innerText = "Email: " + (document.getElementById('email').value || "email@jennyinternet.africa");
+        document.getElementById('disp-tel').innerText = "Tel: " + d.tel;
+        document.getElementById('disp-web').innerText = d.web;
+        document.getElementById('disp-web').href = "https://" + d.web;
+        document.getElementById('disp-addr').innerText = d.addr;
+        document.getElementById('disp-license').innerText = d.license;
+        document.getElementById('disp-disclaimer').innerText = d.disclaimer;
+    }
+
+    function copySignature() {
+        const range = document.createRange();
+        range.selectNode(document.getElementById("sig-content"));
+        window.getSelection().removeAllRanges();
+        window.getSelection().addRange(range);
+        document.execCommand("copy");
+        alert("Signature copied! Go to Gmail Settings and Paste.");
+    }
+    updateSignature();
+</script>
+</body>
+</html>
