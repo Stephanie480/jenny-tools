@@ -16,34 +16,51 @@
         input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
         button { background: #e30613; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 10px; }
 
-        /* Print Layout */
-        .page { width: 210mm; min-height: 297mm; padding: 10mm; margin: 20px auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        .grid { display: grid; grid-template-columns: 90mm 90mm; grid-template-rows: repeat(5, 50mm); gap: 2mm; justify-content: center; }
-        .card { width: 90mm; height: 50mm; border: 0.1pt solid #ddd; display: flex; align-items: center; padding: 15px; box-sizing: border-box; }
+        /* Print Layout - Adjusted for 12 cards (2x6) */
+        .page { width: 210mm; min-height: 297mm; padding: 7mm; margin: 20px auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); box-sizing: border-box; }
+        .grid { 
+            display: grid; 
+            grid-template-columns: 90mm 90mm; 
+            grid-template-rows: repeat(6, 45mm); 
+            gap: 1mm; 
+            justify-content: center; 
+        }
         
-        .logo-container { width: 35%; padding-right: 15px; text-align: center; }
-        .logo { max-width: 100%; height: auto; }
-        .details { width: 65%; border-left: 2px solid #e30613; padding-left: 20px; }
-        .display-name { font-size: 14pt; font-weight: bold; color: #000; margin: 0 0 5px 0; text-transform: uppercase; }
-        .contact-item { font-size: 8.5pt; color: #333; margin-bottom: 3px; }
+        /* Faint grey border for cutting */
+        .card { 
+            width: 90mm; 
+            height: 45mm; 
+            border: 0.5pt solid #e0e0e0; 
+            display: flex; 
+            align-items: center; 
+            padding: 12px; 
+            box-sizing: border-box; 
+            background: white;
+        }
+        
+        .logo-container { width: 30%; padding-right: 15px; text-align: center; }
+        .logo { max-width: 100%; height: auto; display: block; }
+        .details { width: 70%; border-left: 2px solid #e30613; padding-left: 15px; }
+        .display-name { font-size: 13pt; font-weight: bold; color: #000; margin: 0 0 3px 0; text-transform: uppercase; }
+        .contact-item { font-size: 8pt; color: #333; margin-bottom: 2px; line-height: 1.2; }
 
         @media print {
             #controls { display: none; }
-            .page { margin: 0; box-shadow: none; }
+            .page { margin: 0; box-shadow: none; padding: 7mm; }
             body { background: white; }
-            .card { border: 0.1pt solid #eee; }
+            .card { border: 0.5pt solid #d1d1d1 !important; -webkit-print-color-adjust: exact; }
         }
     </style>
 </head>
 <body>
 
 <div id="controls">
-    <h2 style="margin-top:0; color:#e30613;">Card Generator</h2>
+    <h2 style="margin-top:0; color:#e30613;">Card Generator (12 Per Page)</h2>
     <div class="input-group"><label>Full Name</label><input type="text" id="inName" value="Mbali Phakathi" oninput="updateCards()"></div>
     <div class="input-group"><label>Cell Number</label><input type="text" id="inCell" value="078 916 7477" oninput="updateCards()"></div>
     <div class="input-group"><label>Office Number</label><input type="text" id="inOffice" value="087 170 0000" oninput="updateCards()"></div>
     <div class="input-group"><label>Email Address</label><input type="text" id="inEmail" value="sales@jennyinternet.co.za" oninput="updateCards()"></div>
-    <button onclick="window.print()">Print Cards</button>
+    <button onclick="window.print()">Print 12 Cards</button>
 </div>
 
 <div class="page">
@@ -72,7 +89,8 @@
         
         const grid = document.getElementById('cardGrid');
         grid.innerHTML = "";
-        for (let i = 0; i < 10; i++) {
+        // Loop changed to 12
+        for (let i = 0; i < 12; i++) {
             grid.innerHTML += cardHTML;
         }
     }
