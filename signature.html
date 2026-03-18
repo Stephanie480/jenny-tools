@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Jenny Internet - Staff Signature Portal</title>
+    <title>Jenny Internet - Signature Generator</title>
 </head>
 <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px;">
 
-<div style="max-width: 600px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-    <div style="border-bottom: 2px solid #e30613; margin-bottom: 20px; padding-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
+<div style="max-width: 700px; margin: auto; background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    <div style="border-bottom: 2px solid #e30613; margin-bottom: 20px; padding-bottom: 10px;">
         <h2 style="color:#e30613; margin:0;">Staff Signature Portal</h2>
     </div>
     
@@ -31,88 +31,100 @@
 
     <div id="preview-area" style="margin-top: 20px; padding: 20px; border: 1px dashed #ccc; background: #fff;">
         <div id="sig-content">
-            <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; color: #333; line-height: 1.2;">
+            <table cellpadding="0" cellspacing="0" border="0" style="font-family: Arial, sans-serif; color: #333; line-height: 1.4;">
                 <tr>
-                    <td style="padding-right: 15px; vertical-align: top; border-right: 2px solid #e30613;">
+                    <td style="padding-right: 15px; vertical-align: top; border-right: 1px solid #dcdcdc; width: 110px;">
                         <img id="logo-img" src="" width="100" style="display: block; border: 0;">
                     </td>
                     <td style="padding-left: 15px; vertical-align: top;">
-                        <div id="disp-name" style="font-weight: bold; font-size: 18px; color: #000;">Name Surname</div>
-                        <div id="disp-title" style="font-size: 13px; color: #e30613; margin-bottom: 5px;">Position</div>
-                        <div style="font-size: 12px; color: #333;">
-                            <span id="disp-cell">Direct: +27 87 170 0000</span><br>
-                            <span id="disp-email">Email: name@jennyinternet.africa</span><br>
-                            <span id="disp-tel">Tel: +27 87 170 0000</span> | <a id="disp-web" href="#" style="color: #e30613; text-decoration: none; font-weight: bold;">www.jenny.co.za</a>
-                        </div>
+                        <div id="disp-name" style="font-weight: bold; font-size: 14pt; color: #000;">Name Surname</div>
+                        <div id="disp-title" style="font-size: 11pt; color: #555555; margin-bottom: 5px;">Position</div>
+                        <div id="disp-cell" style="font-size: 10pt;">Direct : +27 87 170 0000</div>
+                        <div id="disp-email" style="font-size: 10pt;">Email : name@jennyinternet.africa</div>
+                        <div id="disp-line3" style="font-size: 10pt;">Tel : +27 87 170 0000 | Fax : +27 86 636 6237 | <a id="disp-web" href="#" style="color: #e30613; text-decoration: none; font-weight: bold;">www.jenny.co.za</a></div>
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2" style="padding-top: 15px;">
-                        <div id="disp-addr" style="font-size: 11px; color: #444; margin-bottom: 4px; font-weight: bold;">Address line</div>
-                        <div id="disp-license" style="font-size: 10px; color: #666; margin-bottom: 10px;">License details</div>
-                        <div id="disp-disclaimer" style="font-size: 10px; color: #999; line-height: 1.2; border-top: 1px solid #eee; padding-top: 8px; width: 500px;"></div>
+                        <div id="disp-addr1" style="font-size: 9pt; color: #333; font-weight: bold;">Address Line 1</div>
+                        <div id="disp-addr2" style="font-size: 9pt; color: #333;">Address Line 2</div>
+                        <div id="disp-postal" style="font-size: 9pt; color: #333;">Postal Address</div>
+                        <div id="disp-license" style="font-size: 8pt; color: #666; margin-top: 8px;">License Info</div>
+                        <div id="disp-disclaimer" style="font-size: 8pt; color: #888; margin-top: 10px; line-height: 1.2; width: 600px; border-top: 1px solid #eee; padding-top: 8px;"></div>
                     </td>
                 </tr>
             </table>
-            </div>
+        </div>
     </div>
     
-    <button onclick="copySignature()" style="background: #e30613; color: white; border: none; padding: 15px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px; font-size: 16px;">Click to Copy for Gmail</button>
+    <button onclick="copySignature()" style="background: #e30613; color: white; border: none; padding: 15px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; margin-top: 15px; font-size: 16px;">Copy Signature for Gmail</button>
 </div>
 
 <script>
     const repoURL = window.location.href.substring(0, window.location.href.lastIndexOf('/') + 1);
-    const fullLogoPath = repoURL + "Jenny%20Logo%20New.jpg";
-    document.getElementById('logo-img').src = fullLogoPath;
+    document.getElementById('logo-img').src = repoURL + "JennyLogo.png";
 
     const officeData = {
         SA: {
             tel: "+27 87 170 0000", web: "www.jenny.co.za",
-            addr: "Newcastle: 27 Gemsbok Street, Newcastle 2940 | Johannesburg: Unit 9 French Park, 90 Oxford Street, Randburg 2194",
-            license: "IECS: 0286/IECS/MAR/09 | IECNS: 0286/IECNS/MAR/09",
+            addr1: "Newcastle : 27 Gemsbok Street, Newcastle South Africa 2940",
+            addr2: "Johannesburg : Unit 9 French Park, 90 Oxford Street, Randburg, Johannesburg South Africa 2194",
+            postal: "Postal Address : P.O Box 21214 Newcastle South Africa 2194",
+            license: "Individual Electronics Communications Service License: 0286/IECS/MAR/09 | Individual Electronics Communications Network License: 0286/IECNS/MAR/09",
             link: "https://jenny.co.za/web/legal",
-            text1: "Confidentiality & Privacy Notice: This email is confidential and may be legally privileged. This communication is subject to the terms and legal policies of Jenny Internet (Pty) Ltd at ",
-            text2: ". If received in error, please notify sender."
+            txt1: "Confidentiality & Privacy Notice: This email is confidential and may be legally privileged. It is intended for the addressee only. This communication is subject to the terms, POPIA compliance, and legal policies of Jenny Internet (Pty) Ltd, which can be viewed at ",
+            txt2: ". If you have received this in error, please notify the sender and delete it immediately."
         },
         BW: {
             tel: "+26 73 972 712", web: "www.jenny.co.bw",
-            addr: "Gaborone: Plot 50161, Section 8, Building 3, Unit 1, Block 5 Gaborone",
-            license: "BOCRA License: SAP2017/046 | Company Number: UIN BW00000863877",
+            addr1: "Gaborone : Plot 50161, Section 8, Building 3, Unit 1, Block 5 Gaborone Botswana",
+            addr2: "", postal: "",
+            license: "BOCRA Electronic Communications Services License Number: SAP2017/046 | Company Number: UIN BW00000863877",
             link: "https://jenny.co.bw/legal",
-            text1: "Confidential and intended for addressee only. Subject to terms and privacy policies at ",
-            text2: "."
+            txt1: "This email is confidential and intended for the addressee only. If received in error, please notify the sender and delete it. This communication is subject to the terms and privacy policies of Jenny Internet (Proprietary) Limited, available at ",
+            txt2: "."
         },
         SZ: {
             tel: "+268 2411 3270", web: "www.Jenny.co.sz",
-            addr: "Mbabane: Office no.15 Checkers Business Park Mbabane",
-            license: "Company ID: 201508181016311 | ESSCOM License: GECS/001/17/JENNY",
+            addr1: "Mbabane : Office no.15 Checkers Business Park Mbabane Swaziland",
+            addr2: "Company ID : 201508181016311 Company Nr : R7/43909",
+            postal: "Tax Certification : 105060718",
+            license: "ESSCOM Network and Service License : GECS/001/17/JENNY",
             link: "https://jenny.co.sz/legal",
-            text1: "Notice: Confidential. Subject to the eSwatini Data Protection Act and terms at ",
-            text2: "."
+            txt1: "Notice: Confidential and intended for the addressee. Usage of this info is subject to the eSwatini Data Protection Act and Jenny Internet eSwatini Limited legal terms at ",
+            txt2: ". If received in error, please delete."
         },
         MZ: {
             tel: "+27 87 170 0000", web: "www.Jenny.co.mz",
-            addr: "Polana Cimento, Av.Julius Nyerere n53, 1st Floor, Maputo",
-            license: "Reg: 101212807 | VAT: 401045155 | ARECOM: 02/LC-A/ARECOM/2020",
+            addr1: "Jenny Internet Limitada : Polana Cimento, Av.Julius Nyerere n53, 1st Floor",
+            addr2: "Reg #: In Company Number: 101212807 Vat # :401045155",
+            postal: "ARECOM Service License 02/LC-A/ARECOM/2020 | ARECOM Network License 018/CA/ARECOM/2019",
+            license: "",
             link: "https://jenny.co.mz/en/legal",
-            text1: "Confidential. Subject to policies at ",
-            text2: ". Aviso: Destinado apenas ao destinatário."
+            linkPt: "https://www.jenny.co.mz/web/pt-pt/documentos_legais",
+            txt1: "Confidentiality Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Internet Mozambique Limited, available at ",
+            txt2: ". If received in error, please notify the sender and delete. Aviso de Confidencialidade: Este e-mail é destinado apenas ao destinatário. Está sujeito aos termos e políticas de privacidade da Jenny Internet Mozambique Limited, disponíveis em ",
+            txt3: ". Se recebido por erro, por favor notifique o remetente e apague a mensagem."
         },
         LS: {
             tel: "+266 5201 0024", web: "www.jenny.co.ls",
-            addr: "28 Motsoene Road, Dolphin House, Maseru Industrial",
-            license: "Reg: 76260 | LCA License # LSO/2022/TL01/2",
+            addr1: "28 Motsoene Road, Dolphin House, Maseru Industrial , Lesotho",
+            addr2: "Registration Number 76260",
+            postal: "",
+            license: "Lesotho Communication Authority License # LSO/2022/TL01/2",
             link: "https://jenny.co.ls/legal",
-            text1: "Notice: Confidential. Subject to terms and privacy policies at ",
-            text2: "."
+            txt1: "Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Lesotho (Pty) Ltd, available at ",
+            txt2: ". If received in error, please notify the sender and delete."
         },
         ZM: {
-            tel: "+260 700019301", web: "www.jenny.co.zm",
-            addr: "23rd Floor Findeco House, Cairo Road. Lusaka 10101",
-            license: "ZICTA License: ZICTA/ICT/ECS/0154",
+            tel: "Jenny Internet Zambia Services", web: "www.jenny.co.zm",
+            addr1: "Limited : 23rd Floor Findeco House, Cairo Road. Lusaka Zambia 10101",
+            addr2: "LCO No. : 120190006154.",
+            postal: "ZICTA Service License ZICTA/ICT/ECS/0154 | ZICTA Network License ZICTA/ICT/ECN/0154",
+            license: "",
             link: "https://jenny.co.zm/legal",
-            text1: "Notice: Confidential. Subject to terms and privacy policies at ",
-            text2: "."
+            txt1: "Notice: This email is confidential and intended for the addressee only. It is subject to the terms and privacy policies of Jenny Internet Zambia Limited, available at ",
+            txt2: ". If received in error, please notify the sender and delete."
         }
     };
 
@@ -122,18 +134,27 @@
         
         document.getElementById('disp-name').innerText = document.getElementById('name').value || "Name Surname";
         document.getElementById('disp-title').innerText = document.getElementById('title').value || "Position";
-        document.getElementById('disp-cell').innerText = "Direct: " + (document.getElementById('cell').value || "+27 87 170 0000");
-        document.getElementById('disp-email').innerText = "Email: " + (document.getElementById('email').value || "name@jennyinternet.africa");
-        document.getElementById('disp-tel').innerText = "Tel: " + d.tel;
+        document.getElementById('disp-cell').innerText = "Direct : " + (document.getElementById('cell').value || "+27 87 170 0000");
+        document.getElementById('disp-email').innerText = "Email : " + (document.getElementById('email').value || "name@jennyinternet.africa");
         
-        const web = document.getElementById('disp-web');
-        web.innerText = d.web;
-        web.href = "https://" + d.web;
-        
-        document.getElementById('disp-addr').innerText = d.addr;
+        const line3 = document.getElementById('disp-line3');
+        const telPrefix = (country === 'ZM') ? d.tel : "Tel : " + d.tel;
+        const faxPart = (country === 'ZM' || country === 'BW' || country === 'LS') ? "" : " | Fax : +27 86 636 6237";
+        line3.innerHTML = `${telPrefix}${faxPart} | <a href="https://${d.web}" style="color:#e30613; text-decoration:none; font-weight:bold;">${d.web}</a>`;
+
+        document.getElementById('disp-addr1').innerText = d.addr1;
+        document.getElementById('disp-addr2').innerText = d.addr2;
+        document.getElementById('disp-postal').innerText = d.postal;
         document.getElementById('disp-license').innerText = d.license;
         
-        document.getElementById('disp-disclaimer').innerHTML = d.text1 + `<a href="${d.link}" style="color: #e30613;">${d.link.replace('https://','')}</a>` + d.text2;
+        const disc = document.getElementById('disp-disclaimer');
+        const blueLink = (url) => `<a href="${url}" style="color:#0000EE; text-decoration:underline;">${url.replace('https://','')}</a>`;
+        
+        if (country === 'MZ') {
+            disc.innerHTML = d.txt1 + blueLink(d.link) + d.txt2 + blueLink(d.linkPt) + d.txt3;
+        } else {
+            disc.innerHTML = d.txt1 + blueLink(d.link) + d.txt2;
+        }
     }
 
     function copySignature() {
@@ -144,7 +165,7 @@
         sel.removeAllRanges();
         sel.addRange(range);
         document.execCommand("copy");
-        alert("Signature copied! Now go to Gmail and Paste.");
+        alert("Signature copied! Paste into Gmail settings.");
     }
     updateSignature();
 </script>
