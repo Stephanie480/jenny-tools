@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Jenny Internet Business Card Generator</title>
+    <title>Jenny Internet - Business Card Generator</title>
     <style>
         body { margin: 0; padding: 0; background-color: #f4f4f4; font-family: 'Segoe UI', sans-serif; }
         
@@ -15,22 +15,20 @@
         input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
         button { background: #e30613; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 10px; }
 
-        /* PRINT LAYOUT - FIXED FOR 12 CARDS */
         .page { width: 210mm; min-height: 297mm; padding: 5mm; margin: 20px auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); box-sizing: border-box; }
         
         .grid { 
             display: grid; 
             grid-template-columns: 90mm 90mm; 
-            grid-template-rows: repeat(6, 45mm); /* 6 rows of 45mm fits 12 cards on A4 */
+            grid-template-rows: repeat(6, 45mm); 
             gap: 2mm; 
             justify-content: center; 
         }
         
-        /* Faint grey border for cutting */
         .card { 
             width: 90mm; 
             height: 45mm; 
-            border: 0.5pt solid #d1d1d1; 
+            border: 0.5pt solid #d1d1d1; /* Faint grey cutting line */
             display: flex; 
             align-items: center; 
             padding: 12px; 
@@ -56,12 +54,12 @@
 <body>
 
 <div id="controls">
-    <h2 style="margin-top:0; color:#e30613;">Card Generator (12 Per Page)</h2>
+    <h2 style="margin-top:0; color:#e30613;">Business Card Generator</h2>
     <div class="input-group"><label>Full Name</label><input type="text" id="inName" value="Mbali Phakathi" oninput="updateCards()"></div>
     <div class="input-group"><label>Cell Number</label><input type="text" id="inCell" value="078 916 7477" oninput="updateCards()"></div>
     <div class="input-group"><label>Office Number</label><input type="text" id="inOffice" value="087 170 0000" oninput="updateCards()"></div>
     <div class="input-group"><label>Email Address</label><input type="text" id="inEmail" value="sales@jennyinternet.co.za" oninput="updateCards()"></div>
-    <button onclick="window.print()">Print 12 Cards</button>
+    <button onclick="window.print()">Print To PDF</button>
 </div>
 
 <div class="page">
@@ -91,12 +89,10 @@
         const grid = document.getElementById('cardGrid');
         grid.innerHTML = "";
         
-        // Loop specifically set to 12
         for (let i = 0; i < 12; i++) {
             grid.innerHTML += cardHTML;
         }
     }
-    // Initialize
     updateCards();
 </script>
 
